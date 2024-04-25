@@ -1,18 +1,14 @@
-// Navbar.jsx
-
 import React, { useState, useRef, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import { FaUserCircle } from 'react-icons/fa'; // Import the user circle icon from react-icons
-import { RiAddCircleLine } from 'react-icons/ri'; // Import the add circle icon from react-icons
-import './Navbar.css'; // Import custom CSS for styling
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaUserCircle } from 'react-icons/fa';
 import { FaTimes } from 'react-icons/fa';
+import './Navbar.css';
 
 function Navbar({ role, setDisplayEventList, setDisplayEventForm }) {
-  const [userInfo, setUserInfo] = useState(null); // Assuming user info will be fetched from the backend
+  const [userInfo, setUserInfo] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
-  // Function to toggle sidebar visibility
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
     if (!userInfo && !sidebarOpen) {
@@ -20,7 +16,6 @@ function Navbar({ role, setDisplayEventList, setDisplayEventForm }) {
     }
   };
 
-  // Function to close sidebar when clicking outside of it
   const handleClickOutside = (event) => {
     if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
       setSidebarOpen(false);
@@ -34,20 +29,23 @@ function Navbar({ role, setDisplayEventList, setDisplayEventForm }) {
     };
   }, []);
 
-  // Function to fetch user info (Mocked for now, you'll replace it with backend API call)
+  useEffect(() => {
+    if (!userInfo) {
+      fetchUserInfo();
+    }
+  }, []);
+
   const fetchUserInfo = () => {
-    // Mocking user info for demonstration
     const mockUserInfo = {
       name: 'John Doe',
       usn: 'A1234567',
       email: 'john.doe@example.com',
       position: role === 'eventCoordinator' ? 'Event Coordinator' : role === 'clubCoordinator' ? 'Club Coordinator' : 'Dept Coordinator',
-      profilePic: 'https://randomuser.me/api/portraits/men/1.jpg' // Example profile picture
+      profilePic: 'https://randomuser.me/api/portraits/men/1.jpg'
     };
     setUserInfo(mockUserInfo);
   };
 
-  // Render additional options based on user role
   const renderAdditionalOptions = () => {
     if (role === 'eventCoordinator') {
       return <p>Event details</p>;
@@ -65,21 +63,18 @@ function Navbar({ role, setDisplayEventList, setDisplayEventForm }) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
         <span className="navbar-brand">UTSAV</span>
-        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="#" onClick={toggleSidebar}>
-                <FaUserCircle className="user-profile-icon" size={40} />
-              </a>
-            </li>
-          </ul>
+        <div className="d-flex align-items-center flex-column" onClick={toggleSidebar} style={{ cursor: 'pointer' }}>
+          <div>
+            <FaUserCircle className="user-profile-icon" size={40} />
+          </div>
+          <p className="user-name">{userInfo && userInfo.name}</p>
         </div>
       </div>
       <div ref={sidebarRef} className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-      <button className="close-btn" onClick={toggleSidebar}><FaTimes size={20} /></button>
+        <button className="close-btn" onClick={toggleSidebar}><FaTimes size={20} /></button>
         <div className="user-info">
           <FaUserCircle className="profile-icon" size={60} />
           <div className="user-details">

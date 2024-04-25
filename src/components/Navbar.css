@@ -1,24 +1,59 @@
 /* Navbar.css */
-.container-fluid{
-  background-color: rgb(48, 47, 47);
+
+/* Set the background color of the navbar container */
+.container-fluid {
+  background-color: rgb(0, 0, 0);
+  padding-right: 30px;
 }
+
+
+/* Set the color and position of the brand */
+.navbar-brand {
+  color: rgb(255, 255, 255);
+  /* position: absolute; */
+  margin-left: 20px;
+  font-family: 'Abril Fatface', serif;
+  font-weight: 800;
+  font-size: 30px;
+  padding: 0 5px;
+}
+
+.user-profile-icon {
+  margin-top: 5px; /* Adjusted margin */
+}
+
+.user-name {
+  margin-top: 0.001rem;
+}
+
+/* .user-name {
+  margin-top: 0.001rem;
+}
+
+.user-profile-icon{
+  margin-top: 10px;
+} */
+
+/* Style the sidebar */
 .sidebar {
   position: fixed;
   top: 0;
   right: -300px; /* Initially hidden outside the screen */
   width: 300px; /* Adjust the width as needed */
   height: 100%;
-  background-color: rgb(48, 47, 47);/* White background */
-  box-shadow: 0px 0px 10px rgb(148, 143, 143); /* Drop shadow effect */
+  background-color: rgb(48, 47, 47); /* Set the background color */
+  box-shadow: 0px 0px 10px rgb(148, 143, 143); /* Add a drop shadow effect */
   transition: right 0.3s ease; /* Transition for smooth slide-in animation */
   z-index: 1000; /* Ensure it's on top of other content */
   padding: 20px; /* Add padding to the sidebar content */
 }
 
+/* Show the sidebar when it's open */
 .sidebar.open {
-  right: 0; /* Slide in when sidebarOpen is true */
+  right: 0;
 }
 
+/* Style the close button */
 .close-btn {
   position: absolute;
   top: 10px;
@@ -27,6 +62,7 @@
   cursor: pointer;
 }
 
+/* Style the user info */
 .user-info {
   display: flex;
   flex-direction: column;
@@ -34,18 +70,7 @@
   text-align: center;
 }
 
-.navbar-brand{
-  color: rgb(255, 255, 255);
-  position: absolute;
-  left: 5%;
-  top: 0.1%;
-  font-family: 'Abril Fatface', serif;
-  font-weight: 800;
-  font-size: 40px;
-  
-}
-
-
+/* Style the user details */
 .user-details {
   font-size: 0.9rem;
 }
@@ -54,9 +79,16 @@
   margin: 5px 0;
 }
 
-.additional-options{
+/* Style the additional options */
+.additional-options {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+/* Remove margin and padding from the body */
+body {
+  margin: 0;
+  padding: 0;
 }
