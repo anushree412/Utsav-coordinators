@@ -1,5 +1,3 @@
-/* App.css */
-
 .particle-background {
   position: fixed;
   top: 0;
@@ -7,6 +5,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none; /* Ensure particles don't interfere with other elements */
+  z-index: -1; /* Position particles behind other content */
 }
 
 .particle {
@@ -16,6 +15,19 @@
   animation: particleAnimation linear infinite;
 }
 
+.container {
+  width: 100%;
+  display: flex;
+  background: url('/public/utsav-logo.jpg') center/cover fixed no-repeat ; /* Replace 'your-background-image.jpg' with the path to your background image */
+  position: relative; /* Make the container a positioned container */
+  /* background-size: 200px; */
+  background-position: center ;
+  background-size: 450px;
+  padding-top: 33px; /* Add padding-top to create margin-top for the background image */
+}
+
+
+
 @keyframes particleAnimation {
   0% {
     transform: scale(0);
@@ -24,5 +36,67 @@
   100% {
     transform: scale(2);
     opacity: 0;
+  }
+}
+
+/* s */
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Position particles behind the content */
+}
+
+
+
+.EventList,
+.CreateEvent {
+  flex: 1;
+  width: calc(100% - 20px); /* Calculate width dynamically */
+  background-color: #c5935d;
+  color: black;
+  padding: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.EventList {
+  flex: 1;
+  background-color: #c5935d;
+  color: black;
+  padding: 20px;
+  border-radius: 0.5%;
+  height: 100%; /* Set a minimum height to prevent the container from collapsing */
+}
+
+h4 {
+  display: flex;
+  background-color: rgba(62, 46, 13, 0.838);
+  color: white;
+  padding: 4px;
+}
+
+.custom-btn-primary {
+  background-color: #000000ae;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.custom-btn-primary:hover {
+  background-color: rgb(174, 114, 18);
+  color: #000000; /* Optionally change the hover color */
+}
+
+
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
   }
 }

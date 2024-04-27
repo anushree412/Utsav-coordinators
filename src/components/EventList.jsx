@@ -12,7 +12,7 @@ function EventList() {
   ];
 
   return (
-    <div>
+    <div className="EventListHead">
       <br/>
       <h2>Event List</h2>
       <ul>

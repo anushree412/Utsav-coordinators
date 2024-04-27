@@ -69,33 +69,16 @@ button:focus-visible {
 
 body{
   background-color: black;
-  color: white;
+  color: #c5935d;
 } 
 
 
-
-
-
-
-
-.main-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Make container full height of viewport */
+.form-label{
+  font-weight: 700;
+  font-size:15px ;
+  /* color: #c5935d; */
 }
 
-.zoom-in-out {
-  width: 50%; /* Ensure image fills its container */
-  max-width: 150px; /* Adjust max-width as needed */
-  animation: zoomInOut 1.5s infinite alternate; /* Define the animation */
-}
 
-@keyframes zoomInOut {
-  from {
-    transform: scale(1.5); /* Start with normal size */
-  }
-  to {
-    transform: scale(2); /* Zoom in by 10% */
-  }
-}
+
+

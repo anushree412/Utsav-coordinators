@@ -2,47 +2,47 @@
 
 /* Set the background color of the navbar container */
 .container-fluid {
-  background-color: rgb(0, 0, 0);
-  padding-right: 30px;
+  background-color: #00000000;
+  padding-top: 1px;
+  padding-right: 20px;
 }
-
 
 /* Set the color and position of the brand */
 .navbar-brand {
-  color: rgb(255, 255, 255);
+  color: #c5935d;
   /* position: absolute; */
-  margin-left: 20px;
+  margin-left: 10px;
   font-family: 'Abril Fatface', serif;
   font-weight: 800;
   font-size: 30px;
-  padding: 0 5px;
+  padding: 0 15px;
+}
+
+/* Remove hover effect on navbar brand */
+.navbar-brand:hover {
+  color:#c5935d;/* Keep the same color as default state */
 }
 
 .user-profile-icon {
-  margin-top: 5px; /* Adjusted margin */
+  margin-top: 0px;
+  color: #c5935d; /* Adjusted margin */
 }
 
 .user-name {
-  margin-top: 0.001rem;
+  /* margin-top: 0.001rem; */
+  color: #c5935d;
 }
-
-/* .user-name {
-  margin-top: 0.001rem;
-}
-
-.user-profile-icon{
-  margin-top: 10px;
-} */
 
 /* Style the sidebar */
 .sidebar {
+  color: black;
   position: fixed;
   top: 0;
   right: -300px; /* Initially hidden outside the screen */
   width: 300px; /* Adjust the width as needed */
   height: 100%;
-  background-color: rgb(48, 47, 47); /* Set the background color */
-  box-shadow: 0px 0px 10px rgb(148, 143, 143); /* Add a drop shadow effect */
+  background-color:#c5935d;/* Set the background color */
+  box-shadow: 0px 0px 20px rgb(20, 14, 14); /* Add a drop shadow effect */
   transition: right 0.3s ease; /* Transition for smooth slide-in animation */
   z-index: 1000; /* Ensure it's on top of other content */
   padding: 20px; /* Add padding to the sidebar content */
@@ -85,10 +85,66 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  
+}
+
+.signout-button{
+  margin-bottom: 10px;
+  background-color: black;
+  color:#c5935d;
+  ;
+  font-weight: 700;
 }
 
 /* Remove margin and padding from the body */
 body {
   margin: 0;
   padding: 0;
+}
+
+/* Style the sidebar content */
+.user-info {
+  padding: 10px; /* Add padding to the sidebar content */
+}
+
+.name {
+  font-size: 24px; /* Big font for name */
+}
+
+.position {
+  font-weight: bold; /* Bold font for position */
+  
+}
+
+.email {
+  font-size: 12px; /* Small font for email */
+}
+
+.usn {
+  font-size: 16px; /* Medium font for USN */
+}
+
+/* Navbar.css */
+
+@media (max-width: 900px) {
+  .d-none {
+    display: none !important;
+  }
+}
+
+/* Navbar.css */
+
+.user-profile-icon,
+.user-name {
+  margin-bottom: 5px;
+}
+
+
+.hamburger-icon {
+  background-color: black;
+  color:#c5935d;;
+  border: none;
+  padding: 0;
+  margin-right:0.1px;
+  font-size: 1.5rem;
 }

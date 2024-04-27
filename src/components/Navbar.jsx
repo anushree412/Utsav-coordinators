@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaUserCircle } from 'react-icons/fa';
-import { FaTimes } from 'react-icons/fa';
+import { FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 
 function Navbar({ role, setDisplayEventList, setDisplayEventForm }) {
@@ -46,45 +45,38 @@ function Navbar({ role, setDisplayEventList, setDisplayEventForm }) {
     setUserInfo(mockUserInfo);
   };
 
-  const renderAdditionalOptions = () => {
-    if (role === 'eventCoordinator') {
-      return <p>Event details</p>;
-    } else if (role === 'clubCoordinator' || role === 'deptCoordinator') {
-      return (
-        <div className="additional-options">
-          <button className="menu-item" onClick={() => setDisplayEventList(true)}>Event List</button>
-          {(role === 'clubCoordinator' || role === 'deptCoordinator') && (
-            <button className="menu-item" onClick={() => setDisplayEventForm(true)}>Create Event</button>
-          )}
-        </div>
-      );
-    }
-    return null;
+  const handleSignOut = () => {
+    // Add signout logic here
+    console.log('Signing out...');
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light ">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <span className="navbar-brand">UTSAV</span>
-        <div className="d-flex align-items-center flex-column" onClick={toggleSidebar} style={{ cursor: 'pointer' }}>
-          <div>
-            <FaUserCircle className="user-profile-icon" size={40} />
-          </div>
-          <p className="user-name">{userInfo && userInfo.name}</p>
+        <span className="navbar-brand">Co-Ordinator's</span>
+        <div className="d-none d-lg-flex flex-column align-items-center">
+          <FaUserCircle className="user-profile-icon" size={40} onClick={toggleSidebar} style={{ cursor: 'pointer' }} />
+          <p className="user-name" onClick={toggleSidebar} style={{ cursor: 'pointer' }}>{userInfo && userInfo.name}</p>
         </div>
+
+        {window.innerWidth <= 900 &&
+          <button className="navbar-toggler" type="button" onClick={toggleSidebar}>
+            {sidebarOpen ? <FaTimes className="hamburger-icon" /> : <FaBars className="hamburger-icon" />}
+          </button>
+        }
+
       </div>
       <div ref={sidebarRef} className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <button className="close-btn" onClick={toggleSidebar}><FaTimes size={20} /></button>
         <div className="user-info">
           <FaUserCircle className="profile-icon" size={60} />
           <div className="user-details">
-            <p>Name: {userInfo && userInfo.name}</p>
-            <p>USN: {userInfo && userInfo.usn}</p>
-            <p>Email: {userInfo && userInfo.email}</p>
-            <p>Position: {userInfo && userInfo.position}</p>
+            <p className="name">{userInfo && userInfo.name}</p>
+            <p className="usn">{userInfo && userInfo.usn}</p>
+            <p className="email">{userInfo && userInfo.email}</p>
+            <p className="position">{userInfo && userInfo.position}</p>
+            <button className="signout-button" onClick={handleSignOut}>Sign Out</button>
           </div>
         </div>
-        {renderAdditionalOptions()}
       </div>
     </nav>
   );
