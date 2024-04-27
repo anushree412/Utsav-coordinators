@@ -15,7 +15,10 @@
   animation: particleAnimation linear infinite;
 }
 
-
+.container {
+  display: flex;
+  flex-direction:row;
+}
 
 
 @keyframes particleAnimation {
