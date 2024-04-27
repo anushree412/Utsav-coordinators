@@ -15,16 +15,6 @@
   animation: particleAnimation linear infinite;
 }
 
-.container {
-  width: 100%;
-  display: flex;
-  background: url('/public/utsav-logo.jpg') center/cover fixed no-repeat ; /* Replace 'your-background-image.jpg' with the path to your background image */
-  position: relative; /* Make the container a positioned container */
-  /* background-size: 200px; */
-  background-position: center ;
-  background-size: 450px;
-  padding-top: 33px; /* Add padding-top to create margin-top for the background image */
-}
 
 
 

@@ -2,15 +2,26 @@
 
 /* Set the background color of the navbar container */
 .container-fluid {
-  background-color: #00000000;
+  background-color: transparent; /* Set navbar background color to transparent */
   padding-top: 1px;
   padding-right: 20px;
+}
+
+/* Set background image */
+.container-fluid::before {
+  content: '';
+  background: url('/public/utsav-logo.jpg') center/cover fixed no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 /* Set the color and position of the brand */
 .navbar-brand {
   color: #c5935d;
-  /* position: absolute; */
   margin-left: 10px;
   font-family: 'Abril Fatface', serif;
   font-weight: 800;
@@ -20,17 +31,7 @@
 
 /* Remove hover effect on navbar brand */
 .navbar-brand:hover {
-  color:#c5935d;/* Keep the same color as default state */
-}
-
-.user-profile-icon {
-  margin-top: 0px;
-  color: #c5935d; /* Adjusted margin */
-}
-
-.user-name {
-  /* margin-top: 0.001rem; */
-  color: #c5935d;
+  color:#c5935d;
 }
 
 /* Style the sidebar */
@@ -38,14 +39,14 @@
   color: black;
   position: fixed;
   top: 0;
-  right: -300px; /* Initially hidden outside the screen */
-  width: 300px; /* Adjust the width as needed */
+  right: -300px;
+  width: 300px;
   height: 100%;
-  background-color:#c5935d;/* Set the background color */
-  box-shadow: 0px 0px 20px rgb(20, 14, 14); /* Add a drop shadow effect */
-  transition: right 0.3s ease; /* Transition for smooth slide-in animation */
-  z-index: 1000; /* Ensure it's on top of other content */
-  padding: 20px; /* Add padding to the sidebar content */
+  background-color: #c5935d;
+  box-shadow: 0px 0px 20px rgb(20, 14, 14);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
 }
 
 /* Show the sidebar when it's open */
@@ -85,14 +86,14 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  
 }
 
-.signout-button{
+.signout-button {
   margin-bottom: 10px;
   background-color: black;
-  color:#c5935d;
-  ;
+  color: #c5935d;
+  border: black;
+  padding: 5px;
   font-weight: 700;
 }
 
@@ -104,24 +105,23 @@ body {
 
 /* Style the sidebar content */
 .user-info {
-  padding: 10px; /* Add padding to the sidebar content */
+  padding: 10px;
 }
 
 .name {
-  font-size: 24px; /* Big font for name */
+  font-size: 24px;
 }
 
 .position {
-  font-weight: bold; /* Bold font for position */
-  
+  font-weight: bold;
 }
 
 .email {
-  font-size: 12px; /* Small font for email */
+  font-size: 12px;
 }
 
 .usn {
-  font-size: 16px; /* Medium font for USN */
+  font-size: 16px;
 }
 
 /* Navbar.css */
@@ -132,19 +132,16 @@ body {
   }
 }
 
-/* Navbar.css */
-
 .user-profile-icon,
 .user-name {
   margin-bottom: 5px;
 }
 
-
 .hamburger-icon {
   background-color: black;
-  color:#c5935d;;
+  color: #c5935d;
   border: none;
   padding: 0;
-  margin-right:0.1px;
+  margin-right: 0.1px;
   font-size: 1.5rem;
 }
