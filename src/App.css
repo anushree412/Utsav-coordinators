@@ -18,7 +18,7 @@
 .container {
   display: flex;
   flex-direction:row;
-}
+} 
 
 
 @keyframes particleAnimation {
@@ -45,26 +45,18 @@
 
 
 
-.EventList,
-.CreateEvent {
-  flex: 1;
-  width: calc(100% - 20px); /* Calculate width dynamically */
+.form {
+  width: calc(100% ); /* Calculate width dynamically */
   background-color: #c5935d;
   color: black;
   padding: 20px;
-  margin: 10px;
+  margin-left: 30px;
+  
   margin-bottom: 20px;
-  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  box-sizing: border-box; 
 }
 
-.EventList {
-  flex: 1;
-  background-color: #c5935d;
-  color: black;
-  padding: 20px;
-  border-radius: 0.5%;
-  height: 100%; /* Set a minimum height to prevent the container from collapsing */
-}
+
 
 h4 {
   display: flex;
@@ -72,6 +64,7 @@ h4 {
   color: white;
   padding: 4px;
 }
+
 
 .custom-btn-primary {
   background-color: #000000ae;
@@ -83,13 +76,99 @@ h4 {
 
 .custom-btn-primary:hover {
   background-color: rgb(174, 114, 18);
-  color: #000000; /* Optionally change the hover color */
+  color: #000000; /
 }
 
 
 
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.EventList {
+  /* flex: 1; */
+  background-color: #c5935d;
+  color: black;
+  border-radius: 0.5%;
+  height: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+.EventListHead {
+  flex: 1;
+  background-color: #c5935d;
+  color: black;
+  border-radius: 0.5%;
+  height: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 0px;
+  width: 40vw;
+}
+
+
+.CreateEvent {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  align-items:flex-start;
+  margin: 5px ;
+  /* margin-right: 0; */
+}
+
+.btnCreate {
+  box-shadow: 0px 0px 10px rgb(229, 223, 223);
+  background-color: #c5935d;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  border: none;
+  padding: 7px;
+  border-radius: 3%;
+}
+
+.EventListHead h2{
+  padding-top: 5px;
+}
+
 @media (max-width: 900px) {
+  body{
+     margin-left: 10px;
+     margin-right: 10px;
+  }
+
   .container {
     flex-direction: column;
+  }
+
+  .CreateEvent{
+    flex:1;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    justify-content: left;
+  }
+
+  .CreateEvent .btnCreate{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    justify-content: left;
+  }
+
+  form{
+    flex: 1;
+    background-color: #c5935d;
+    color: black;
+    border-radius: 0.5%;
+    height: 100%;
+    margin-top: 30px;
+    padding-bottom: 20px;
+  
   }
 }

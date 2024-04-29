@@ -38,7 +38,7 @@ const EventForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      
+  <div className="form">    
       <h2 className="CreateEventHead">Create Event</h2>
 
       <EventIntro/>
@@ -67,6 +67,7 @@ const EventForm = () => {
       <IndustryConnect/>
 
       <button type="submit" className="btn custom-btn-primary">Submit</button>
+      </div>
     </form>
   );
 };

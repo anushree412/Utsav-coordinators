@@ -8,10 +8,7 @@ function App() {
   // Assuming the user's role is passed as a prop from the authentication component
   const userRole = 'deptCoordinator'; // Example user role
   const [displayEventList, setDisplayEventList] = useState(true); // Set displayEventList to true by default
-  const [displayEventForm, setDisplayEventForm] = useState(true); // Set displayEventForm to true by default
-
-  // Function to determine if the user is an event coordinator
-  const isEventCoordinator = userRole === 'eventCoordinator';
+  const [displayEventForm, setDisplayEventForm] = useState(false); // Set displayEventForm to false by default
 
   // Function to determine if the user is either a club coordinator or department coordinator
   const isClubOrDeptCoordinator = userRole === 'clubCoordinator' || userRole === 'deptCoordinator';
@@ -55,36 +52,33 @@ function App() {
     generateParticles(); // Generate particles when the component mounts
   }, []);
 
+  const toggleEventForm = () => {
+    setDisplayEventForm(!displayEventForm); // Toggle the display of the event form
+  };
+
   return (
     <div className="App">
       <Navbar role={userRole} setDisplayEventList={setDisplayEventList} setDisplayEventForm={setDisplayEventForm} />
       <div className="container">
-      
-        
         <div className="EventList">
-        {/* Render EventList if the user is an event coordinator or a club/department coordinator */}
-        {isEventCoordinator && displayEventList && <EventList />}
-        {isClubOrDeptCoordinator && displayEventList && <EventList />}
+          {/* Render EventList if the user is a club/department coordinator */}
+          {isClubOrDeptCoordinator && displayEventList && <EventList />}
         </div>
 
-        <div className="CreateEvent">
-        {/* Render EventForm if the user is a club/department coordinator */}
-        {isClubOrDeptCoordinator && displayEventForm && <EventForm />}
-        </div>
-
-        {/* Render other components based on user role or any other condition */}
+        {/* Render EventForm if the user is a club/department coordinator and displayEventForm is true */}
+        {isClubOrDeptCoordinator && displayEventForm ? (
+          <EventForm />
+        ) : (
+          <div className="CreateEvent">
+            {/* Render button to toggle EventForm */}
+            <button type="button" className="btnCreate " onClick={toggleEventForm}>Create Event</button>
+            
+          </div>
+        )}
       </div>
 
       {/* Container for particles */}
       <div className="particle-background"></div>
-
-      {/* <div className="main-container">
-        <img 
-          src="/utsav-logo.jpg" 
-          alt="Utsav" 
-          className="zoom-in-out" 
-        />
-      </div> */}
     </div>
   );
 }
