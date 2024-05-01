@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import EventList from './components/EventList';
 import EventForm from './components/EventForm';
-import './App.css'; // Import CSS file for particle animation
+import CreateEventButton from './components/CreateEventButton';
+import Event from './components/Event';
+import AttendancePage from './components/AttendancePage';
+import AddStudentPage from './components/AddStudentPage'; // Import the AddStudentPage component
+import './App.css';
 
 function App() {
-  // Assuming the user's role is passed as a prop from the authentication component
-  const userRole = 'deptCoordinator'; // Example user role
-  const [displayEventList, setDisplayEventList] = useState(true); // Set displayEventList to true by default
-  const [displayEventForm, setDisplayEventForm] = useState(false); // Set displayEventForm to false by default
-
-  // Function to determine if the user is either a club coordinator or department coordinator
-  const isClubOrDeptCoordinator = userRole === 'clubCoordinator' || userRole === 'deptCoordinator';
+  const [userRole, setUserRole] = useState('clubCoordinator');
+  const [displayEventList, setDisplayEventList] = useState(true);
+  const [students, setStudents] = useState([
+    { id: 1, name: 'Student 1', phone: '1234567890', attended: false },
+    { id: 2, name: 'Student 2', phone: '2345678901', attended: false },
+    { id: 3, name: 'Student 3', phone: '3456789012', attended: false },
+    // Add more students as needed
+  ]);
 
   // Function to generate particles dynamically
   const createParticle = () => {
@@ -52,34 +58,35 @@ function App() {
     generateParticles(); // Generate particles when the component mounts
   }, []);
 
-  const toggleEventForm = () => {
-    setDisplayEventForm(!displayEventForm); // Toggle the display of the event form
-  };
-
   return (
-    <div className="App">
-      <Navbar role={userRole} setDisplayEventList={setDisplayEventList} setDisplayEventForm={setDisplayEventForm} />
-      <div className="container">
-        <div className="EventList">
-          {/* Render EventList if the user is a club/department coordinator */}
-          {isClubOrDeptCoordinator && displayEventList && <EventList />}
-        </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar role={userRole} setDisplayEventList={setDisplayEventList} />
+        
+        {/* Container for particles */}
+        <div className="particle-background"></div>
 
-        {/* Render EventForm if the user is a club/department coordinator and displayEventForm is true */}
-        {isClubOrDeptCoordinator && displayEventForm ? (
-          <EventForm />
-        ) : (
-          <div className="CreateEvent">
-            {/* Render button to toggle EventForm */}
-            <button type="button" className="btnCreate " onClick={toggleEventForm}>Create Event</button>
-            
-          </div>
-        )}
+        {/* Define routes */}
+        <Routes>
+          <Route path="/" element={
+            <div className="content-container">
+              <div className="content-box1">
+                {displayEventList && <EventList />}
+              </div>
+              <div className="content-box2">
+                <CreateEventButton />
+              </div>
+            </div>
+          } />
+          <Route path="/create-event" element={<EventForm />} />
+          <Route path="/event/:id" element={<Event students={students} setStudents={setStudents} />} />
+          <Route path="/event/:id/attendance/:studentId" element={<AttendancePage students={students} setStudents={setStudents} />} />
+          {/* Add route for AddStudentPage */}
+          <Route path="/event/:id/attendance/:studentId/add-student" element={<AddStudentPage />} />
+        <Route path="/event/:id/attendance/:studentId" element={<AttendancePage />} />
+        </Routes>
       </div>
-
-      {/* Container for particles */}
-      <div className="particle-background"></div>
-    </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,9 +1,9 @@
 // EventList.jsx
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function EventList() {
-  // Fetch event list data from backend or use mock data
+  // Mock event data
   const events = [
     { id: 1, name: 'Event 1' },
     { id: 2, name: 'Event 2' },
@@ -12,14 +12,17 @@ function EventList() {
   ];
 
   return (
-    <div className="EventListHead">
-      <br/>
+    <div className="EventListContent">
       <h2>Event List</h2>
       <div>
+        {/* Render event links */}
         {events.map(event => (
-          <p key={event.id}>
-            {event.name} 
-          </p>
+          <div className="EventListName" key={event.id}>
+            {/* Link to the event details page */}
+            <Link to={`/event/${event.id}`}>
+              {event.name}
+            </Link>
+          </div>
         ))}
       </div>
     </div>

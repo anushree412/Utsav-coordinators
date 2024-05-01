@@ -10,6 +10,7 @@ import Coordinators from './Coordinators';
 import EventIntro from '../EventIntro';
 import IndustryConnect from './IndustryConnect';
 
+
 const EventForm = () => {
   const [formData, setFormData] = useState({
     startDate: null,
@@ -37,38 +38,38 @@ const EventForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-  <div className="form">    
-      <h2 className="CreateEventHead">Create Event</h2>
+    <div className="form-container">
+      <form className="form" onSubmit={handleSubmit}>
+        <h2 className="CreateEventHead">Create Event</h2>
 
-      <EventIntro/>
-      <div className="mb-3">
-        <label htmlFor="startDate" className="form-label">Start Date</label>
-        <DateInput
-          selectedDate={formData.startDate}
-          onChange={handleStartDateChange}
-        />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="lastDate" className="form-label">Last Date</label>
-        <DateInput
-          selectedDate={formData.lastDate}
-          onChange={handleLastDateChange}
-        />
-      </div>
-      
-      <Registration/>
-      <Sponsors/>
-      <ResourcePerson/>
-      <Rules/>
-      <Prizes/>
-      <EventDetails/>
-      <Coordinators/>
-      <IndustryConnect/>
+        <EventIntro/>
+        <div className="mb-3">
+          <label htmlFor="startDate" className="form-label">Start Date</label>
+          <DateInput
+            selectedDate={formData.startDate}
+            onChange={handleStartDateChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="lastDate" className="form-label">Last Date</label>
+          <DateInput
+            selectedDate={formData.lastDate}
+            onChange={handleLastDateChange}
+          />
+        </div>
+        
+        <Registration/>
+        <Sponsors/>
+        <ResourcePerson/>
+        <Rules/>
+        <Prizes/>
+        <EventDetails/>
+        <Coordinators/>
+        <IndustryConnect/>
 
-      <button type="submit" className="btn custom-btn-primary">Submit</button>
-      </div>
-    </form>
+        <button type="submit" className="btn custom-btn-primary">Submit</button>
+      </form>
+    </div>
   );
 };
 
